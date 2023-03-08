@@ -73,8 +73,9 @@ update Transacciones
 set nota = 'nota actualizada'
 where id = 1;
 
--- procedures
+-- PROCEDURES ---------------------------
 
+-- test para ejemplo --
 create or alter procedure transacciones_selectConTipoOperacion
 	@fecha DATE
 AS 
@@ -97,7 +98,49 @@ AS
 begin
 	insert into transacciones(UsuarioId,FechaTransaccion,Monto,TipoOperacionId,Nota)
 	values(@UsuarioId,@FechaTransaccion,@Monto,@TipoOperacionId,@Nota)
-end
+end -- fin test para ejemplo --
+
+-- para insertar nuevo tipo cuenta
+CREATE OR ALTER PROCEDURE TiposCuentas_Insertar
+	@Nombre nvarchar(50), --parametro de entrada
+	@UsuarioId int --parametro de entrada
+AS 
+BEGIN 
+	
+	-- al insertar nuevo registro tipocuenta, campo orden debe tomar el "ultimo valor de orden + 1"
+	DECLARE @Orden int; --parametro interno, variable de uso interno
+	SELECT @Orden = COALESCE (MAX(Orden),0)+1 -- coalesce(x,y): permite tomar "x" cuando es != null, toma "y" cuando es null
+	from TiposCuentas
+	where UsuarioId = @UsuarioId
+	
+	insert into TiposCuentas(Nombre, UsuarioId, Orden)
+	values(@Nombre, @UsuarioId, @Orden)
+	
+	select SCOPE_IDENTITY();
+	
+	SELECT COALESCE (MAX(Orden),0)+1 -- coalesce permite tomar un valor distinto a null y usarlo
+	from TiposCuentas
+	where UsuarioId = 1;
+	
+	
+	
+End--- fin insertar nuevo tipo cuenta --
+
+-- test insertar transaccion
+CREATE or alter PROCEDURE dbo.Transacciones_insertar
+	@UsuarioId nvarchar(450),
+	@FechaTransaccion date,
+	@Monto decimal (18,2),
+	@TipoOperacionId int,
+	@Nota nvarchar(1000)
+AS 
+begin
+	insert into transacciones(UsuarioId,FechaTransaccion,Monto,TipoOperacionId,Nota)
+	values(@UsuarioId,@FechaTransaccion,@Monto,@TipoOperacionId,@Nota)
+end -- fin test insertar transaccion
+
+
+-- PROCEDURES ---------------------------
 
 -- ejemplos ejecuciones de procedures
 exec transacciones_selectConTipoOperacion '2023-03-01';
@@ -114,6 +157,12 @@ where Nombre = @Nombre and UsuarioId = @UsuarioId
 
 select *
 from TiposCuentas;
+
+
+update TiposCuentas 
+set nombre = @Nombre
+where id = @id
+
 
 
 

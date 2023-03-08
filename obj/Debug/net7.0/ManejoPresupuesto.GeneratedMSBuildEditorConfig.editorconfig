@@ -20,6 +20,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/gmatias/code/nvme/felipe_gavilan/MVC/ManejoPresupuesto/Views/Home/NoEncontrado.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Ob0VuY29udHJhZG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/gmatias/code/nvme/felipe_gavilan/MVC/ManejoPresupuesto/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -32,8 +36,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/gmatias/code/nvme/felipe_gavilan/MVC/ManejoPresupuesto/Views/TiposCuentas/Borrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGlwb3NDdWVudGFzL0JvcnJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/gmatias/code/nvme/felipe_gavilan/MVC/ManejoPresupuesto/Views/TiposCuentas/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGlwb3NDdWVudGFzL0NyZWFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gmatias/code/nvme/felipe_gavilan/MVC/ManejoPresupuesto/Views/TiposCuentas/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGlwb3NDdWVudGFzL0VkaXRhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/gmatias/code/nvme/felipe_gavilan/MVC/ManejoPresupuesto/Views/TiposCuentas/Index.cshtml]

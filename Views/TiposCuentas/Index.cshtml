@@ -17,14 +17,14 @@
             </tr>
         </thead>
         
-        <tbody>
+        <tbody id="reordenable">
             @foreach (var tipoCuenta in Model)
             {
                 <tr>
                     <td>
-                        @* <a class="btn btn-outline-secondary">Editar</a> *@
-                        <a class="btn btn-primary">Editar</a>
-                        <a class="btn btn-danger">Borrar</a>
+                        <input type="hidden" value="@tipoCuenta.Id" class="ids"/>
+                        <a asp-action="Editar" asp-route-id="@tipoCuenta.Id" class="btn btn-primary">Editar</a>
+                        <a asp-action="Borrar" asp-route-id="@tipoCuenta.Id"  class="btn btn-danger">Borrar</a>
                     </td>
                     <td>
                         @tipoCuenta.Nombre
@@ -33,3 +33,47 @@
             }
         </tbody>
     </table>
+
+    @section Scripts {
+        <script>
+
+            // genera la url donde se encuentra ordenar            
+            const urlOrdenar = '@Url.Action("ordenar")';@* codigo de razor *@
+
+            @* espera a que cargue el DOM antes de ejecutar *@
+            $(function(){
+                $("#reordenable").sortable({
+                    @* stop: cuando se termine de arrastrar ejecutar la fx *@
+                    stop: async function(e,ui){
+                        await actualizarOrdenes();
+                    }
+                });
+
+                async function actualizarOrdenes(){
+                    const ids = obtenerIdsDeElementos();
+                    await enviarIdsAlBackend(ids);
+                }
+
+                function obtenerIdsDeElementos(){
+                    const ids = $(".ids").map(function(){
+                        return $(this).val();
+                    }).get();
+
+                    return ids;
+                }
+
+                async function enviarIdsAlBackend(ids){
+                    var data = JSON.stringify(ids);
+
+                    await fetch(urlOrdenar,{
+                        method: 'POST',
+                        body: data,
+                        headers:{
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                }
+
+            })
+        </script>
+    }
