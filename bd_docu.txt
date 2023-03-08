@@ -1,0 +1,7 @@
+* TIPO CUENTA:
+permite clasificar tipos de cuentas en grupos
+(ej: cuenta de banco, tarjeta de credito, efectivo, prestamo, etc)
+Permite tener claro nuestras finanzas
+
+
+
