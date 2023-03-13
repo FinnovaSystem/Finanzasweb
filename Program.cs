@@ -5,9 +5,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//DAPPER para conexion con tabla tiposCuentas
+//* DAPPER para conexion de repositorios con tablas de bd
 builder.Services.AddTransient<IRepositorioTiposCuentas, RepositorioTiposCuentas>();
 builder.Services.AddTransient<IServicioUsuarios, ServicioUsuarios>();
+builder.Services.AddTransient<IRepositorioCuentas,  RepositorioCuentas>();
+builder.Services.AddTransient<IRepositorioCategorias,  RepositorioCategorias>();
+
+//* AUTOMapper
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 

@@ -116,14 +116,11 @@ BEGIN
 	insert into TiposCuentas(Nombre, UsuarioId, Orden)
 	values(@Nombre, @UsuarioId, @Orden)
 	
+	insert into TiposCuentas(Nombre, UsuarioId, Orden)
+	values('efectivo2',1,9)
+	
 	select SCOPE_IDENTITY();
-	
-	SELECT COALESCE (MAX(Orden),0)+1 -- coalesce permite tomar un valor distinto a null y usarlo
-	from TiposCuentas
-	where UsuarioId = 1;
-	
-	
-	
+
 End--- fin insertar nuevo tipo cuenta --
 
 -- test insertar transaccion
@@ -149,23 +146,44 @@ exec Transacciones_insertar 'peter','2023-03-01',899.69,1,'nota ejemplo';
 insert into TiposCuentas (Nombre, UsuarioId, Orden)
 values (Nombre, UsuarioId, Orden)
 
+----------------- QUERYS PARA LUEGO INSERTAR CON DAPPER Y OTROS EJEMPLOS
 select 1
 from TiposCuentas
 where Nombre = @Nombre and UsuarioId = @UsuarioId
---where Nombre = 'Ahorro' and UsuarioId = 0
-
 
 select *
 from TiposCuentas;
-
 
 update TiposCuentas 
 set nombre = @Nombre
 where id = @id
 
+-- cuentas
+select c.id,c.Nombre, c.Balance , tc.Nombre as TipoCuenta
+from Cuentas c
+inner join TiposCuentas tc
+on tc.Id  = c.TipoCuentaId 
+where tc.UsuarioId  = @UsuarioId
+ORDER by tc.Orden ;
 
 
+update table cuenta
+set Nombre = @Nombre,
+Balance = @Balance,
+Descripcion = @Descripcion,
+TipoCuentaId = @TipoCuentaId
+where Id = @Id;
 
+update cuentas
+set Nombre = "asdas",
+Balance = 45454,
+Descripcion = "asdfas",
+TipoCuentaId = 4
+where Id = 3;
+
+
+insert into Categorias(Nombre,TipoOperacionId,UsuarioId)
+values(@Nombre,@TipoOperacionId,@UsuarioId)
 
 
 

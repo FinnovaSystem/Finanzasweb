@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ManejoPresupuesto</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ManejoPresupuesto.styles.css" asp-append-version="true" />
+    @* <link rel="stylesheet" href="~/ManejoPresupuesto.styles.css" asp-append-version="true" /> *@
+    
+    @*! css especial qe recoge TODO lo relacionado al aislamiento de CSS *@
+    <link rel="stylesheet" href="ManejoPresupuesto.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
+
 </head>
 <body>
     <header>
@@ -23,8 +28,13 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link text-dark"  asp-controller="TiposCuentas" asp-action="Index">Tipos Cuentas</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark"  asp-controller="Cuentas" asp-action="Index">Cuentas</a>
                         </li>
                     </ul>
                 </div>

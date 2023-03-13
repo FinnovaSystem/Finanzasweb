@@ -3,5 +3,10 @@ permite clasificar tipos de cuentas en grupos
 (ej: cuenta de banco, tarjeta de credito, efectivo, prestamo, etc)
 Permite tener claro nuestras finanzas
 
+* CUENTA
+a traves de una cuenta, el usuario podrá manejar distintos balances.
+ej: banco, tarjeta credito, prestamo, etc
 
-
+* Categoria
+permite indicar en qe se gasta el dinero,
+y tambien de donde provienen los ingresos
